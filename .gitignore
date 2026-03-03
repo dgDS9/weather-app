@@ -1,0 +1,13 @@
+# secrets
+.env
+
+# python cache
+__pycache__/
+*.pyc
+
+# jupyter
+.ipynb_checkpoints/
+Forecasting Weather of Kalsruhe2.ipynb
+
+# folders you don't want in git
+Archive/
