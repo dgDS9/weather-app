@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 
 import app.model as model_store
@@ -29,6 +29,18 @@ DEFAULT_CITY = "Karlsruhe"
 def startup():
     model_store.load_model_artifacts()
 
+
+# Root endpoint for health check, damit Fehlermeldung 404 nicht auftaucht
+@app.get("/")
+def root():
+    return {"status": "ok", "service": "weather-api"}
+
+# kleine Icon im Browser-Tab weglassen, damit Fehlermeldung 404 nicht auftaucht
+@app.get("/favicon.ico", include_in_schema=False)
+def favicon():
+    return Response(status_code=204)  # kein Inhalt, aber kein 404
+
+# Endpoint für Live-Vorhersage basierend auf aktuellen Wetterdaten
 @app.get("/forecast-live-current")
 def forecast_live_current(lat: float = DEFAULT_LAT, lon: float = DEFAULT_LON, city: str = DEFAULT_CITY):
     current = fetch_current_weather(lat=lat, lon=lon)
