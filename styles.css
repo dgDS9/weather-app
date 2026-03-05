@@ -205,17 +205,15 @@ body{
   color: rgba(255,230,230,.95);
 }
 
-.heroRight{
+/* .heroRight{
   display:flex;
   flex-direction:column;
   gap: 12px;
     /* wichtig: nicht über die ganze Spalte strecken
   align-items: flex-start; */
-}
-
-/* .heroRight{
-  align-items: flex-start;
 } */
+
+
 
 .glass.big{
   min-width: 320px;
@@ -232,6 +230,11 @@ body{
 
 .glass.big{
   padding: 18px 18px 16px;
+}
+
+
+.heroRight{
+  align-items: flex-start;
 }
 
 .bigTop, .bigBottom{display:flex; flex-direction:column; gap: 8px}
