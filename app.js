@@ -1,4 +1,4 @@
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://weather-app-03v8.onrender.com";
 const DEFAULT_CITY = "Karlsruhe";
 const DEFAULT_LAT = 49.0096;
 const DEFAULT_LON = 8.4053;
