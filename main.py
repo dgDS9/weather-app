@@ -29,6 +29,11 @@ DEFAULT_CITY = "Karlsruhe"
 def startup():
     model_store.load_model_artifacts()
 
+# HEAD-Request für Root, damit Fehlermeldung 405 nicht auftaucht
+@app.head("/")
+def head_root():
+    return Response(status_code=200)
+
 
 # Root endpoint for health check, damit Fehlermeldung 404 nicht auftaucht
 @app.get("/")
