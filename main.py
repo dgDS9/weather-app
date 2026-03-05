@@ -12,9 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        # "http://localhost:5500",
-        # "http://127.0.0.1:5500",
-        "https://dgds9.github.io",
+        "https://dgds9.github.io"
     ],
     allow_credentials=False,   # <— wichtig
     allow_methods=["*"],
