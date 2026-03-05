@@ -25,6 +25,7 @@ function formatLocal(isoUtc) {
   }
 }
 
+/** Set status message with optional error styling. */
 function setStatus(msg, isError = false) {
   const statusEl = document.getElementById("status");
   if (!statusEl) return;
@@ -40,6 +41,7 @@ function setStatus(msg, isError = false) {
   statusEl.hidden = false;
   statusEl.textContent = msg;
 
+  // subtle styling difference between normal status and errors
   if (!isError) {
     statusEl.style.borderColor = "rgba(120,230,255,.25)";
     statusEl.style.background = "rgba(120,230,255,.10)";
@@ -49,12 +51,13 @@ function setStatus(msg, isError = false) {
   }
 }
 
+/** Animate number change in an element (e.g. for temperature updates). */
 function animateNumber(el, toValue, decimals = 2, durationMs = 350) {
   if (!el) return;
   const from = parseFloat(el.textContent);
   const start = Number.isFinite(from) ? from : toValue;
   const startTime = performance.now();
-
+// easeOutCubic animation
   function step(now) {
     const t = Math.min(1, (now - startTime) / durationMs);
     const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
@@ -217,7 +220,7 @@ async function loadForecast() {
     }
   }
 }
-
+// Load forecast on page load and set up refresh button.
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("btnRefresh");
   if (btn) btn.addEventListener("click", loadForecast);

@@ -1,3 +1,4 @@
+// This is a simple HTML file that serves as the structure for a weather forecasting application. It includes a header with a brand logo and title, a main section with a hero layout that displays current weather conditions and predictions, and a card for additional notes. The design is responsive and uses CSS for styling, with JavaScript likely handling the dynamic content updates.
 <!doctype html>
 <html lang="de">
 <head>
@@ -8,9 +9,10 @@
   <link rel="icon" href="data:,">
 </head>
 
+// The body of the HTML document contains the main structure of the weather forecasting application, including a background element, a header with branding and actions, and a main section with a hero layout that displays current weather conditions and predictions. The design is responsive and visually appealing, with a focus on providing clear and concise information to the user.
 <body>
   <div class="bg" aria-hidden="true"></div>
-
+// The header section includes a brand logo and title, as well as a refresh button for updating the weather information. The main section is divided into two columns, with the left column displaying the location, observation time, forecast time, and status, while the right column features a larger glass container that shows the current temperature and predicted temperature for t+24h, along with a card for additional notes. The overall design is clean and modern, utilizing CSS for styling and JavaScript for dynamic content updates.
   <header class="topbar">
     <div class="brand">
       <div class="logo" aria-hidden="true">
@@ -25,7 +27,7 @@
         <div class="brandSub">XGBoost • t+24h</div>
       </div>
     </div>
-
+// The actions section of the header includes a refresh button that allows users to update the weather information displayed on the page. The button is styled with a class of "btn" and includes an icon for visual indication. This interactive element enhances the user experience by providing a convenient way to access the latest weather data without needing to reload the entire page.
     <div class="actions">
       <button id="btnRefresh" class="btn" type="button">
         Refresh
@@ -33,7 +35,7 @@
       </button>
     </div>
   </header>
-
+// The main section of the HTML document features a hero layout that is divided into two columns. The left column displays key information such as the location, observation time, forecast time, and status of the weather conditions. The right column contains a larger glass container that prominently shows the current temperature and the predicted temperature for t+24h, along with a card that provides additional notes about the application. This layout is designed to be visually appealing and user-friendly, allowing users to quickly access important weather information while also providing context and details through the notes section.
   <main class="container">
     <section class="hero">
       <div class="heroLeft">
@@ -41,11 +43,11 @@
           <span class="dot"></span>
           Live (based on historical data) 
         </div>
-
+// The headline section of the hero layout displays the location of the weather forecast, which is dynamically updated based on the data retrieved. The observation time and forecast time are also displayed in a meta section, providing users with context about when the weather data was observed and when the forecast is valid. Additionally, there is a status section that can be used to display any relevant information or alerts about the weather conditions, enhancing the overall user experience by keeping users informed about important updates or changes in the weather.
         <h1 class="headline">
           <span id="location">—</span>
         </h1>
-
+// The meta section of the hero layout provides additional information about the weather data being displayed. It includes the observation time, which indicates when the weather data was collected, and the forecast time, which indicates when the predicted weather conditions are expected to occur. This information is crucial for users to understand the relevance and timeliness of the weather data, allowing them to make informed decisions based on the current and predicted weather conditions. The status section can be used to display any important updates or alerts related to the weather, further enhancing the user experience by keeping users informed about potential changes in the weather conditions.
         <div class="meta">
           <div class="metaItem">
             <div class="metaLabel">Observation</div>
@@ -56,10 +58,10 @@
             <div id="fcTime" class="metaValue">—</div>
           </div>
         </div>
-
+// The status section of the hero layout is designed to display any relevant information or alerts about the weather conditions. This can include updates on severe weather, changes in forecasted conditions, or any other important messages that users should be aware of. By providing a dedicated area for status updates, the application can enhance the user experience by keeping users informed about potential changes in the weather and allowing them to take necessary precautions if needed. The status section can be dynamically updated based on the latest weather data, ensuring that users always have access to the most current information.
         <div id="status" class="status" hidden></div>
       </div>
-
+// The right column of the hero layout features a larger glass container that prominently displays the current temperature and the predicted temperature for t+24h. The current temperature is shown in a clear and bold format, making it easy for users to quickly understand the current weather conditions. The predicted temperature for t+24h provides users with insight into what they can expect in the near future, allowing them to plan accordingly. Additionally, there is a card that provides notes about the application, such as the fact that there are no cookies, tracking, or user accounts, and that only weather data is stored without any personal data. This information helps to build trust with users by emphasizing the privacy-focused nature of the application.
       <div class="heroRight">
         <div class="glass big">
           <div class="bigTop">
@@ -68,9 +70,9 @@
               <span id="nowTemp">—</span><span class="unit">°C</span>
             </div>
           </div>
-
+// The bigTop section of the glass container displays the current temperature, which is dynamically updated based on the latest weather data. The temperature is presented in a clear and bold format, making it easy for users to quickly understand the current weather conditions. The unit of measurement (°C) is also included to provide context for the temperature value. This section serves as a focal point for users to immediately grasp the current weather situation at a glance.
           <div class="bigDivider"></div>
-
+// The bigBottom section of the glass container displays the predicted temperature for t+24h, which is also dynamically updated based on the latest weather data. Similar to the current temperature, the predicted temperature is presented in a clear and bold format, allowing users to easily understand what to expect in the near future. The inclusion of the unit of measurement (°C) provides context for the temperature value, ensuring that users can accurately interpret the information being presented. This section helps users to plan ahead by giving them insight into upcoming weather conditions.
           <div class="bigBottom">
             <div class="bigLabel">Prediction (t+24h)</div>
             <div class="bigValue">
@@ -78,7 +80,7 @@
             </div>
           </div>
         </div>
-
+// The card section within the right column of the hero layout provides additional notes about the application. It emphasizes the privacy-focused nature of the application by stating that there are no cookies, tracking, or user accounts, and that only weather data is stored without any personal data. This information helps to build trust with users by assuring them that their privacy is respected and that the application is solely focused on providing accurate weather information without any intrusive data collection practices.
         <article class="card">
           <h2 class="cardTitle">Notes</h2>
           <ul class="list">
@@ -89,7 +91,7 @@
       </div>
     </section>
   </main>
-
+// The JavaScript file (app.js) is included at the end of the body to ensure that the DOM is fully loaded before any scripts are executed. This file likely contains the logic for fetching weather data, updating the DOM elements with the latest information, and handling user interactions such as the refresh button. By placing the script at the end of the body, we can ensure that all HTML elements are available for manipulation when the script runs, preventing potential errors and improving the overall performance of the application.
   <script src="app.js"></script>
 </body>
 </html>
