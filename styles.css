@@ -1,3 +1,5 @@
+/* Weather Forecasting • ML (XGBoost) */
+/* code commets in enflisch because of the international team */
 :root{
   --bg0:#070a12;
   --bg1:#0b1430;
@@ -16,6 +18,7 @@
   --radius2: 16px;
 }
 
+/* reset and base styles */
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
@@ -28,6 +31,7 @@ body{
   overflow-x:hidden;
 }
 
+/* background image with overlay effects, using a pseudo element for the overlay to keep the markup clean and allow for easy adjustments of the overlay opacity and colors */
 .bg{
   position: fixed;
   inset: 0;
@@ -43,6 +47,7 @@ body{
   filter: saturate(1.15) contrast(1.10);
 }
 
+/* the ::after pseudo element creates a layered effect on top of the background image, allowing for the addition of gradients and color overlays that enhance the visual depth and mood of the page without affecting the underlying image. The use of multiple gradients creates a dynamic and visually appealing background that can be easily customized by adjusting the colors, sizes, and positions of the gradients. */
 .bg::after{
   content:"";
   position:absolute;
@@ -55,6 +60,7 @@ body{
   pointer-events:none;
 }
 
+/* layout and component styles */
 .topbar{
   max-width: 1100px;
   margin: 24px auto 0;
@@ -65,6 +71,7 @@ body{
   gap: 16px;
 }
 
+/* the .brand class styles the branding section of the top bar, using flexbox to align the logo and text elements horizontally with a gap between them. The min-width ensures that the brand section maintains a consistent size, while the display and align-items properties center the content vertically. The gap property creates space between the logo and the text, enhancing readability and visual appeal. */
 .brand{
   display:flex;
   align-items:center;
@@ -72,6 +79,7 @@ body{
   min-width: 240px;
 }
 
+/* the .logo class styles the logo element, giving it a fixed size, rounded corners, and a glass-like appearance using background color, border, box-shadow, and backdrop-filter properties. The display and place-items properties center any content within the logo, while the color property sets the text color for any icons or text inside the logo. This combination of styles creates a visually appealing and modern logo design that stands out against the background. */
 .logo{
   width: 44px;
   height: 44px;
@@ -86,6 +94,7 @@ body{
   color: var(--text);
 }
 
+/* the .brandTitle class styles the main title of the brand, using a heavier font weight and slight letter spacing to create a strong visual hierarchy and enhance readability. The increased font weight makes the title stand out more prominently, while the letter spacing adds a subtle touch of elegance and improves the overall aesthetics of the text. */
 .brandTitle{
   font-weight: 750;
   letter-spacing: .2px;
@@ -95,8 +104,10 @@ body{
   color: var(--muted2);
 }
 
+/* the .actions class styles the container for action buttons in the top bar, using flexbox to align the buttons horizontally with a gap between them. The display and align-items properties ensure that the buttons are centered vertically within the top bar, while the gap property creates space between individual buttons, improving usability and visual appeal. This layout allows for easy access to important actions while maintaining a clean and organized design. */
 .actions{display:flex; align-items:center; gap:10px}
 
+/* the .btn class styles the buttons used throughout the interface, giving them a modern and visually appealing design with a glass-like appearance. The combination of background color, border, box-shadow, and backdrop-filter properties creates a sense of depth and interactivity. The padding, border-radius, and font styling enhance the overall aesthetics and usability of the buttons, while the transition property allows for smooth visual feedback on hover and active states. This design approach ensures that the buttons are both functional and visually engaging for users. */
 .btn{
   appearance:none;
   border:1px solid var(--stroke);
@@ -123,12 +134,14 @@ body{
 .btn:active{transform: translateY(0px) scale(.99)}
 .btnIcon{opacity:.9}
 
+/* the .container class styles the main content area of the page, setting a maximum width to ensure that the content does not stretch too wide on larger screens, which can improve readability. The margin property centers the container horizontally and adds vertical spacing above and below it, while the padding property provides horizontal spacing within the container to prevent content from touching the edges. This layout creates a clean and organized structure for the main content, enhancing the overall user experience. */
 .container{
   max-width: 1100px;
   margin: 18px auto 60px;
   padding: 0 18px;
 }
 
+/* the .hero class styles the main hero section of the page, using CSS Grid to create a two-column layout with a gap between the columns. The grid-template-columns property defines the relative widths of the columns, while the align-items property ensures that the content within each column is stretched to fill the available vertical space. The margin-top property adds spacing above the hero section, separating it from any preceding content. This layout allows for a visually appealing and organized presentation of key information in the hero section. */
 .hero{
   display:grid;
   grid-template-columns: 1.05fr .95fr;
@@ -137,10 +150,12 @@ body{
   margin-top: 18px;
 }
 
+/* the .heroLeft class styles the left column of the hero section, adding padding to create space around the content. The padding property provides vertical and horizontal spacing, ensuring that the content does not touch the edges of the column and enhancing readability. This layout allows for a clean and organized presentation of information in the left column of the hero section. */
 .heroLeft{
   padding: 18px 6px;
 }
 
+/* the .pill class styles small, rounded elements that can be used for tags, labels, or status indicators. The display and align-items properties create an inline-flex container that centers the content vertically, while the gap property adds space between any icons or text within the pill. The padding and border-radius properties give the pill its distinctive rounded shape, while the background and border properties create a glass-like appearance. The font styling enhances readability, and the backdrop-filter properties add depth to the design by creating a blurred background effect. This combination of styles results in visually appealing and functional pill elements that can be used throughout the interface. */
 .pill{
   display:inline-flex;
   align-items:center;
@@ -156,6 +171,7 @@ body{
   -webkit-backdrop-filter: blur(10px);
 }
 
+/* the .dot class styles small circular elements that can be used as indicators or decorative accents. The width and height properties set the size of the dot, while the border-radius property creates a perfect circle. The background and box-shadow properties give the dot a glowing effect, making it visually distinct and attention-grabbing. This simple yet effective design allows the dot to serve as a versatile element for various purposes within the interface, such as indicating status, highlighting important information, or adding visual interest to the layout. */
 .dot{
   width: 10px;
   height: 10px;
@@ -164,6 +180,7 @@ body{
   box-shadow: 0 0 22px rgba(120,230,255,.8);
 }
 
+/* the .headline class styles the main heading of the hero section, using a combination of margin, font size, line height, and letter spacing to create a visually striking and readable headline. The margin property adds spacing above and below the headline, while the font-size property uses the clamp function to ensure that the text scales appropriately across different screen sizes. The line-height property improves readability by controlling the spacing between lines of text, and the letter-spacing property adds a subtle touch of style by slightly reducing the space between characters. This combination of styles results in a headline that is both attention-grabbing and easy to read, making it an effective focal point for the hero section. */
 .headline{
   margin: 14px 0 10px;
   font-size: clamp(32px, 4.2vw, 52px);
@@ -171,6 +188,7 @@ body{
   letter-spacing: -0.6px;
 }
 
+/* the .meta class styles a container for metadata or additional information, using flexbox to create a flexible layout that can adapt to different screen sizes. The display and gap properties create a horizontal layout with space between individual meta items, while the flex-wrap property allows the items to wrap onto multiple lines if necessary. The margin-top property adds spacing above the meta section, separating it from preceding content. This layout ensures that the meta information is presented in an organized and visually appealing manner, enhancing the overall user experience. */
 .meta{
   display:flex;
   gap: 16px;
@@ -178,6 +196,7 @@ body{
   margin-top: 10px;
 }
 
+/* the .metaItem class styles individual items within the meta section, giving them a consistent appearance with a glass-like design. The min-width property ensures that each meta item maintains a minimum size, while the border, background, and border-radius properties create a visually appealing container for the content. The padding property adds space within the meta item, preventing the content from touching the edges, while the backdrop-filter properties enhance the design by creating a blurred background effect. This combination of styles results in cohesive and attractive meta items that can effectively display additional information in the interface. */
 .metaItem{
   min-width: 220px;
   border:1px solid var(--stroke);
@@ -196,6 +215,7 @@ body{
   font-weight: 650;
 }
 
+/* the .status class styles a status indicator or message, using a combination of margin, padding, border, background, and color properties to create a visually distinct and attention-grabbing element. The margin-top property adds spacing above the status element, while the padding property provides space within the element to enhance readability. The border and background properties create a glass-like appearance with a subtle red tint, which can be used to indicate warnings, errors, or important information. The color property sets the text color to a light red shade, ensuring that the content stands out against the background. This design approach results in a status element that effectively communicates important information while maintaining visual appeal within the interface. */
 .status{
   margin-top: 14px;
   padding: 12px 14px;
@@ -205,20 +225,12 @@ body{
   color: rgba(255,230,230,.95);
 }
 
-/* .heroRight{
-  display:flex;
-  flex-direction:column;
-  gap: 12px;
-    /* wichtig: nicht über die ganze Spalte strecken
-  align-items: flex-start; */
-} */
-
-
-
+/* the .glass class styles a container with a glass-like appearance, using a combination of border, background, box-shadow, and backdrop-filter properties to create a visually appealing and modern design. The border-radius property gives the container rounded corners, while the border and background properties create a translucent effect that allows the underlying content to show through. The box-shadow property adds depth to the design by creating a subtle shadow around the container, and the backdrop-filter properties enhance the glass-like effect by blurring the background behind the container. This combination of styles results in a versatile and attractive container that can be used for various purposes within the interface, such as displaying key information or grouping related content together. */
 .glass.big{
   min-width: 320px;
 }
 
+/* the .glass.big class extends the base .glass styles by adding a minimum width, ensuring that the container maintains a consistent size even when the content inside is minimal. This is particularly useful for larger sections of the interface, such as the hero section, where a more substantial container can enhance the visual impact and provide ample space for key information. By setting a minimum width, the .glass.big class helps to create a balanced and visually appealing layout that can effectively showcase important content while maintaining the overall design aesthetic of the interface. */
 .glass{
   border-radius: var(--radius);
   border: 1px solid var(--stroke);
@@ -228,15 +240,17 @@ body{
   -webkit-backdrop-filter: blur(14px);
 }
 
+/* the .glass.big class extends the base .glass styles by adding a minimum width, ensuring that the container maintains a consistent size even when the content inside is minimal. This is particularly useful for larger sections of the interface, such as the hero section, where a more substantial container can enhance the visual impact and provide ample space for key information. By setting a minimum width, the .glass.big class helps to create a balanced and visually appealing layout that can effectively showcase important content while maintaining the overall design aesthetic of the interface. */
 .glass.big{
   padding: 18px 18px 16px;
 }
 
-
+/* the .heroRight class styles the right column of the hero section, using flexbox to align the content to the top of the column. The align-items property is set to flex-start, which ensures that the content is aligned to the top edge of the column, creating a visually balanced layout when paired with the left column. This approach allows for a clean and organized presentation of information in the right column of the hero section, complementing the content in the left column and enhancing the overall user experience. */
 .heroRight{
   align-items: flex-start;
 }
 
+/* the .bigTop and .bigBottom classes style sections within the larger glass container, using flexbox to create a vertical layout with space between the elements. The display and flex-direction properties set up a column layout, while the gap property adds space between individual elements within each section. This design approach allows for a clear separation of content within the larger container, making it easier for users to digest information and navigate through the interface. By organizing content into distinct sections with appropriate spacing, the .bigTop and .bigBottom classes contribute to a more visually appealing and user-friendly design. */
 .bigTop, .bigBottom{display:flex; flex-direction:column; gap: 8px}
 .bigLabel{
   font-size: 13px;
@@ -259,6 +273,7 @@ body{
   margin: 14px 0;
 }
 
+/* the .deltaRow class styles a row of elements that display changes or differences, using flexbox to create a horizontal layout with space between the elements. The display and align-items properties ensure that the content is centered vertically, while the justify-content property creates space between the elements, allowing for a clear distinction between different pieces of information. The gap property adds additional spacing between individual elements, enhancing readability and visual appeal. The flex-wrap property allows the elements to wrap onto multiple lines if necessary, ensuring that the layout remains responsive and visually balanced across different screen sizes. This design approach makes it easy for users to quickly understand changes or differences presented in this section of the interface. */
 .deltaRow{
   display:flex;
   align-items:center;
@@ -276,6 +291,7 @@ body{
 }
 .hint{font-size: 12px; color: var(--muted2)}
 
+/* the .footerCard class styles a card element that can be used in the footer section of the interface, using a combination of border, background, padding, and backdrop-filter properties to create a visually appealing and cohesive design. The border-radius property gives the card rounded corners, while the border and background properties create a glass-like appearance that allows the underlying content to show through. The padding property adds space within the card, enhancing readability and preventing content from touching the edges. The backdrop-filter properties further enhance the design by creating a blurred background effect, contributing to a modern and stylish look that complements the overall aesthetic of the interface. This design approach results in an attractive and functional card element that can effectively display information in the footer section. */
 .footerCard{
   border-radius: var(--radius2);
   border: 1px solid var(--stroke);
@@ -296,6 +312,7 @@ body{
   word-break: break-all;
 }
 
+/* the .grid class styles a container that uses CSS Grid to create a two-column layout with a gap between the columns. The margin-top property adds spacing above the grid, separating it from preceding content. The display and grid-template-columns properties define the structure of the grid, while the gap property creates space between individual grid items, enhancing readability and visual appeal. This layout allows for an organized presentation of content in a flexible and responsive manner, making it suitable for various types of information or components within the interface. */
 .grid{
   margin-top: 18px;
   display:grid;
@@ -303,6 +320,7 @@ body{
   gap: 14px;
 }
 
+/* the .card class styles individual card elements within the grid, using a combination of border, background, padding, and backdrop-filter properties to create a visually appealing and cohesive design. The border-radius property gives the cards rounded corners, while the border and background properties create a glass-like appearance that allows the underlying content to show through. The padding property adds space within the cards, enhancing readability and preventing content from touching the edges. The backdrop-filter properties further enhance the design by creating a blurred background effect, contributing to a modern and stylish look that complements the overall aesthetic of the interface. This design approach results in attractive and functional card elements that can effectively display information within the grid layout. */
 .card{
   border-radius: var(--radius);
   border: 1px solid var(--stroke);
@@ -325,6 +343,7 @@ body{
   font-size: 14px;
 }
 
+/* the .list class styles unordered lists within the card elements, using a combination of margin, padding, color, line-height, and font-size properties to create a visually appealing and readable list format. The margin property removes default spacing around the list, while the padding-left property adds indentation to create a clear hierarchy between the list items. The color property sets the text color to a muted shade, enhancing readability without overpowering the overall design. The line-height property improves readability by controlling the spacing between lines of text, and the font-size property ensures that the list items are appropriately sized for easy reading. This design approach results in well-formatted and visually appealing lists that effectively convey information within the card elements. */
 @media (max-width: 900px){
   .hero{grid-template-columns: 1fr}
   .metaItem{min-width: 0; flex: 1}
