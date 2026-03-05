@@ -34,7 +34,7 @@ body{
   pointer-events: none;
   transform: translateZ(0);
 
-  background-image: url("assets/karlsruhe-schloss.png");
+  background-image: url("karlsruhe-schloss.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
