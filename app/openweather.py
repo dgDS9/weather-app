@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # API-Key aus Environment holen (nicht hardcoden!)
-OPENWEATHER_API_KEY = os.environ("OPENWEATHER_API_KEY")
+OPENWEATHER_API_KEY = os.getenv("OPENWEATHER_API_KEY")
 if not OPENWEATHER_API_KEY:
     raise RuntimeError(
         "OPENWEATHER_API_KEY is not set. Put it in a .env file or environment variables."
