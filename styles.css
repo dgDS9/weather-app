@@ -205,17 +205,20 @@ body{
   color: rgba(255,230,230,.95);
 }
 
-.heroRight{
+/* .heroRight{
   display:flex;
   flex-direction:column;
   gap: 12px;
     /* wichtig: nicht über die ganze Spalte strecken
   align-items: flex-start; */
+} */
+
+.heroRight{
+  align-items: flex-start;
 }
 
 .glass.big{
-  width: fit-content;          /* schrumpft auf Inhalt */
-  max-width: 620px;            /* damit es nicht absurd wird */
+  min-width: 320px;
 }
 
 .glass{
