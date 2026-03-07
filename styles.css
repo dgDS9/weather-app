@@ -219,9 +219,34 @@ body{
   margin-top: 14px;
   padding: 12px 14px;
   border-radius: 14px;
-  border: 1px solid rgba(255,120,120,.28);
-  background: rgba(255,120,120,.10);
-  color: rgba(255,230,230,.95);
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(10,14,22,.55);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  letter-spacing: .2px;
+  line-height: 1.35;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  animation: statusPop .18s ease-out;
+}
+
+.status--info{
+  border-color: rgba(120,230,255,.45);
+  background: rgba(120,230,255,.14);
+}
+
+.status--warn{
+  border-color: rgba(255,200,120,.55);
+  background: rgba(255,200,120,.18);
+}
+
+.status--error{
+  border-color: rgba(255,120,120,.55);
+  background: rgba(255,120,120,.18);
+}
+
+@keyframes statusPop{
+  from { transform: translateY(-4px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
 }
 
 /* the .glass class styles a container with a glass-like appearance, using a combination of border, background, box-shadow, and backdrop-filter properties to create a visually appealing and modern design. The border-radius property gives the container rounded corners, while the border and background properties create a translucent effect that allows the underlying content to show through. The box-shadow property adds depth to the design by creating a subtle shadow around the container, and the backdrop-filter properties enhance the glass-like effect by blurring the background behind the container. This combination of styles results in a versatile and attractive container that can be used for various purposes within the interface, such as displaying key information or grouping related content together. */

@@ -26,29 +26,24 @@ function formatLocal(isoUtc) {
 }
 
 /** Set status message with optional error styling. */
-function setStatus(msg, isError = false) {
+function setStatus(msg, type = "info") {
   const statusEl = document.getElementById("status");
   if (!statusEl) return;
 
   if (!msg) {
     statusEl.hidden = true;
     statusEl.textContent = "";
-    statusEl.style.borderColor = "";
-    statusEl.style.background = "";
+    statusEl.classList.remove("status--info", "status--warn", "status--error");
     return;
   }
 
   statusEl.hidden = false;
   statusEl.textContent = msg;
 
-  // subtle styling difference between normal status and errors
-  if (!isError) {
-    statusEl.style.borderColor = "rgba(120,230,255,.25)";
-    statusEl.style.background = "rgba(120,230,255,.10)";
-  } else {
-    statusEl.style.borderColor = "rgba(255,120,120,.30)";
-    statusEl.style.background = "rgba(255,120,120,.10)";
-  }
+  statusEl.classList.remove("status--info", "status--warn", "status--error");
+  if (type === "warn") statusEl.classList.add("status--warn");
+  else if (type === "error") statusEl.classList.add("status--error");
+  else statusEl.classList.add("status--info");
 }
 
 /** Animate number change in an element (e.g. for temperature updates). */
@@ -90,9 +85,10 @@ function sleep(ms) {
  * - Retries for network errors, timeouts, and 5xx responses.
  * - Shows progress via setStatus().
  */
+// --- fetchWithRetry() (full) ---
 async function fetchWithRetry(url, opts = {}) {
   const {
-    retries = 2, // total extra tries (2 => up to 3 attempts)
+    retries = 2, // extra tries (2 => up to 3 attempts total)
     timeoutMs = 60000,
     backoffMs = 3000,
   } = opts;
@@ -103,10 +99,11 @@ async function fetchWithRetry(url, opts = {}) {
       const timer = setTimeout(() => controller.abort(), timeoutMs);
 
       if (attempt === 0) {
-        setStatus("Loading live forecast…");
+        setStatus("Loading live forecast…", "info");
       } else {
         setStatus(
-          `Backend wacht gerade auf… Versuch ${attempt + 1}/${retries + 1} (kann bis ~50s dauern)`
+          `⏳ Backend wacht gerade auf… Versuch ${attempt + 1}/${retries + 1} (kann bis ~50s dauern)`,
+          "warn"
         );
       }
 
@@ -130,7 +127,6 @@ async function fetchWithRetry(url, opts = {}) {
     } catch (err) {
       const msg = String(err?.message ?? err);
 
-      // Abort (timeout) or network failure -> retry if attempts left
       const isTimeout = msg.toLowerCase().includes("aborted");
       const isNetwork =
         msg.toLowerCase().includes("failed to fetch") ||
@@ -146,7 +142,6 @@ async function fetchWithRetry(url, opts = {}) {
     }
   }
 
-  // should never reach
   throw new Error("Fetch failed after retries");
 }
 
@@ -211,7 +206,7 @@ async function loadForecast() {
       `Fehler beim Laden der Prognose. Backend evtl. im Cold-Start oder nicht erreichbar. (${String(
         err?.message ?? err
       )})`,
-      true
+      "error"
     );
   } finally {
     if (btn) {
