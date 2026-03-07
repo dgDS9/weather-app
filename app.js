@@ -99,10 +99,10 @@ async function fetchWithRetry(url, opts = {}) {
       const timer = setTimeout(() => controller.abort(), timeoutMs);
 
       if (attempt === 0) {
-        setStatus("Loading live forecast…", "info");
+        setStatus("Loading live forecast…takes a moment", "info");
       } else {
         setStatus(
-          `⏳ Backend wacht gerade auf… Versuch ${attempt + 1}/${retries + 1} (kann bis ~50s dauern)`,
+          `⏳The data is being retrieved… Last step ${attempt + 1}/${retries + 1} (kann bis ~50s dauern)`,
           "warn"
         );
       }
