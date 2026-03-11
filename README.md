@@ -6,20 +6,30 @@ Honestly… me neither 😅 .
 
 And yet, here is the link to exactly that: https://lnkd.in/emHTSVRs
 
-Small note: if the website has been inactive for a while, the initial loading time may take a bit longer. The server runs on a free hosting plan — that is the trade-off.
+Small note: if the website has been inactive for a while, the initial loading time may take a bit longer. 
+The server runs on a free hosting plan — that is the trade-off.
 
 So why did I build a weather website with such a narrow use case and only limited features?
 
 Because this project was never just about weather.
 
-It was about exploring how much work it really takes to turn the forecast of an AI/ML model into something user-friendly and actually usable. Because building an AI model is only half the job — making it usable is the real challenge.
+It was about exploring how much work it really takes to turn the forecast of an AI/ML model into something 
+user-friendly and actually usable. Because building an AI model is only half the job — making it usable is 
+the real challenge.
 
-I built this project in my free time because I keep seeing the same issue in the industry: many people can develop AI or ML models, but far fewer can turn them into usable products or interfaces that help users actually understand and work with the results.
+I built this project in my free time because I keep seeing the same issue in the industry: many people can 
+develop AI or ML models, but far fewer can turn them into usable products or interfaces that help users 
+actually understand and work with the results.
 
-A model output on its own is often not very useful for end users. Without the right context, predictions can be difficult to interpret. That is why frontend applications and clear visualizations matter so much: they make AI outputs more accessible, understandable, and practical.
+A model output on its own is often not very useful for end users. Without the right context, predictions 
+can be difficult to interpret. That is why frontend applications and clear visualizations matter so much: 
+they make AI outputs more accessible, understandable, and practical.
 
-For this project, I worked with around 50 years of historical weather data, trained and evaluated multiple machine learning models, selected the best-performing one, built an API to process daily data from OpenWeather, and finally turned everything into a live website using JavaScript, CSS, and HTML.
-The result is a small end-to-end project that combines machine learning, data processing, API integration, frontend development, and deployment — from model to live application.
+For this project, I worked with around 50 years of historical weather data, trained and evaluated multiple
+machine learning models, selected the best-performing one, built an API to process daily data from OpenWeather, 
+and finally turned everything into a live website using JavaScript, CSS, and HTML.
+The result is a small end-to-end project that combines machine learning, data processing, API integration, 
+frontend development, and deployment — from model to live application.
 
 Could I have expanded it further? Absolutely.
 More forecast days, more weather variables, more features.
