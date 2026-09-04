@@ -43,11 +43,11 @@ def tune_xgboost(df):
     y_val = validation[TARGET]
 
     param_grid = {
-        "max_depth": [4, 6, 8],
-        "learning_rate": [0.03, 0.05, 0.08],
-        "subsample": [0.7, 0.8, 1.0],
-        "colsample_bytree": [0.7, 0.8, 1.0],
-        "min_child_weight": [1, 5],
+        "max_depth": [4, 6],
+        "learning_rate": [0.05],
+        "subsample": [0.8],
+        "colsample_bytree": [0.8],
+        "min_child_weight": [1],
     }
 
     best_mae = np.inf
