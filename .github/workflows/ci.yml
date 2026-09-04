@@ -17,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE_NAME: ghcr.io/dgDS9/weather-app
+  IMAGE_NAME: ghcr.io/dgds9/weather-app
   
 jobs: 
   backend-checks:
