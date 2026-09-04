@@ -132,34 +132,34 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # deploy-development:
-  #   name: deployment development
-  #   runs-on: ubuntu-latest
-  #   needs: docker-build
+  deploy-development:
+    name: deployment development
+    runs-on: ubuntu-latest
+    needs: docker-build
 
-  #   if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request'
 
-  #   env:
-  #     RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
     
-  #   steps:
-  #   - name: install render CLI
-  #     run: |
-  #         curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh
-  #         echo "$HOME/.render/bin" >> "$GITHUB_PATH"
+    steps:
+    - name: install render CLI
+      run: |
+          curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh
+          echo "$HOME/.render/bin" >> "$GITHUB_PATH"
 
-  #   - name: Show image to deploy
-  #     run: |
-  #      echo "Image built:"
-  #      echo "${{ env.IMAGE_NAME }}:${{ github.event.pull_request.head.sha }}" 
+    - name: Show image to deploy
+      run: |
+       echo "Image built:"
+       echo "${{ env.IMAGE_NAME }}:${{ github.event.pull_request.head.sha }}" 
 
-  #   - name: deploy image to development
-  #     run: |
-  #       render deploys create \
-  #          "${{ secrets.RENDER_DEV_SERVICE_ID }}" \
-  #           --image "${{ env.IMAGE_NAME }}:${{ github.event.pull_request.head.sha }}" \
-  #           --wait \
-  #           --confirm
+    - name: deploy image to development
+      run: |
+        render deploys create \
+           "${{ secrets.RENDER_DEV_SERVICE_ID }}" \
+            --image "${{ env.IMAGE_NAME }}:${{ github.event.pull_request.head.sha }}" \
+            --wait \
+            --confirm
        
 
   # deploy-staging:
