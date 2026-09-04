@@ -11,3 +11,12 @@ __pycache__/
 
 # folders you don't want in git
 Archive/
+
+
+# Ordner data wird ignoriert
+data/
+
+
+# MLflow
+mlruns/
+mlflow.db
