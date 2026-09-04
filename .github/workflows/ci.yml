@@ -1,6 +1,6 @@
 name: CI
 
-  on: 
+on: 
     pull_request:
       branches:
         - main
@@ -20,7 +20,7 @@ concurrency:
 #   IMAGE_NAME: hier muss das regestierte Image rein 
   
 jobs: 
-  Backend-Checks:
+  backend-checks:
     name: Backend Checks  
     runs-on: ubuntu-latest
 
