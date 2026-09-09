@@ -162,48 +162,48 @@ jobs:
             --confirm
        
 
-  # deploy-staging:
-  #   name: deployment staging
-  #   runs-on: ubuntu-latest
-  #   needs: docker-build
+  deploy-staging:
+    name: deployment staging
+    runs-on: ubuntu-latest
+    needs: docker-build
 
-  #   if: git.hub.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: git.hub.event_name == 'push' && github.ref == 'refs/heads/main'
 
-  #   env:
-  #     RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
 
-  #   steps:
-  #    - name: Set up Docker Buildx
-  #      uses: docker/setup-buildx-action@4
+    steps:
+     - name: Set up Docker Buildx
+       uses: docker/setup-buildx-action@4
 
-  #    - name: Login in to Github Container Registry
-  #      uses: docker/login-action@v4
-  #      with:
-  #         registy: ghcr.io
-  #         username: ${{ github.actor }}
-  #         password: ${{ secrets.GITHUB_TOKEN }}
+     - name: Login in to Github Container Registry
+       uses: docker/login-action@v4
+       with:
+          registy: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
-  #    - name: Install Render CLI
-  #      run: |
-  #         curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh
-  #         echo "$HOME/.render/bin" >> "$GITHUB_PATH"
+     - name: Install Render CLI
+       run: |
+          curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh
+          echo "$HOME/.render/bin" >> "$GITHUB_PATH"
 
-  #    - name: Show image to deploy
-  #      run: |
-  #        echo "Image built:"
-  #        echo "${{ env.IMAGE_NAME }}:${{ github.sha }}"
+     - name: Show image to deploy
+       run: |
+         echo "Image built:"
+         echo "${{ env.IMAGE_NAME }}:${{ github.sha }}"
 
-  #    - name: Deploy image to staging
-  #      run: |
-  #         render deploy create \
-  #           "${{ secrets.RENDER_PROD_SERVICE_ID }}" \
-  #            --image "${{ env.IMAGE_NAME }}:${{ github.sha }}" \
-  #            --wait \
-  #            --confirm
+     - name: Deploy image to staging
+       run: |
+          render deploy create \
+            "${{ secrets.RENDER_STAGING_SERVICE_ID }}" \
+             --image "${{ env.IMAGE_NAME }}:${{ github.sha }}" \
+             --wait \
+             --confirm
 
-  #    - name: Mark image as tested on Staging
-  #      run: |
-  #         docker buildx imagetools create \
-  #          --tag "${{env.IMAGE_NAME}}:staging" \
-  #          "${{ env.IMAGE_NAME }}:${{ github.sha }}"
-  #
+     - name: Mark image as tested on Staging
+       run: |
+          docker buildx imagetools create \
+           --tag "${{env.IMAGE_NAME}}:staging" \
+           "${{ env.IMAGE_NAME }}:${{ github.sha }}"
+  
