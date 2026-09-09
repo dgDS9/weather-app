@@ -1,0 +1,42 @@
+name: Deploy Production
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Docker image tag tested on staging"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: ghcr.io/dgds9/weather-app
+
+jobs:
+  deploy-production:
+    name: Deploy Production
+    runs-on: ubuntu-latest
+
+    env:
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+
+    steps:
+      - name: Install Render CLI
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/render-oss/cli/main/bin/install.sh | sh
+          echo "$HOME/.render/bin" >> "$GITHUB_PATH"
+
+      - name: Show image to deploy
+        run: |
+          echo "Deploying:"
+          echo "${{ env.IMAGE_NAME }}:${{ inputs.image_tag }}"
+
+      - name: Deploy image to Production
+        run: |
+          render deploys create \
+            "${{ secrets.RENDER_PROD_SERVICE_ID }}" \
+            --image "${{ env.IMAGE_NAME }}:staging" \
+            --wait \
+            --confirm
