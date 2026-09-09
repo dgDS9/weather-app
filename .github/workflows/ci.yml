@@ -167,7 +167,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker-build
 
-    if: git.hub.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     env:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
@@ -195,7 +195,7 @@ jobs:
 
      - name: Deploy image to staging
        run: |
-          render deploy create \
+          render deploys create \
             "${{ secrets.RENDER_STAGING_SERVICE_ID }}" \
              --image "${{ env.IMAGE_NAME }}:${{ github.sha }}" \
              --wait \
